@@ -6,30 +6,32 @@ import datetime
 
 
 client = MongoClient()
-db = client.test
-restaurants = db.restaurants
+db = client.nasa
+meteorites = db.meteorites
 
 
-def findByZip(zip): 
-        for restaurant in restaurants.find({"address.zipcode" : str(zip)}):
-                print(restaurant["name"])        
-
-    
-def findByBorough(borough):
-        for restaurant in restaurants.find({"borough": borough}):
-                print(restaurant["name"])
+def findName(name):
+        for meteorite in meteorites.find({"name" : str(name)}):
+                print(meteorite["name"])
 
 
-def findByZipWithScoreCap(zip, score):
-        for restaurant in restaurants.find({"address.zipcode" : str(zip), "grades.score": {"$lt": score}}):
-                print(restaurant["name"])
+def findMass(mass):
+        for meteorite in meteorites.find({"mass": str(mass)}):
+                print(meteorite["mass"])
 
 
-def findByZipAndGrade(zip, grade):
-        for restaurant in restaurants.find({"address.zipcode" :str(zip), "grades.grade": grade}):
-                print(restaurant["name"])
+def findYear(year):
+        for meteorite in meteorites.find():
+            yeartemp = meteorite["year"][:4]
+            if (yeartemp == year):
+                print(yeartemp)
 
-                      
+
+def findCoordinates(lat, long):
+        for meteorite in meteorites.find({"reclat" :str(lat), "reclong": str(long)}):
+                print(meteorite["reclat"] + ", " + meteorite["long"])
+
+
 #findByZip(11234)
 #findByBorough("Bronx")
 #findByZipWithScoreCap(10280, 8)
