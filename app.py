@@ -22,7 +22,7 @@ def findMass(mass):
 
 def findYear(year):
         for meteorite in meteorites.find():
-            print(meteorite)
+            pprint(meteorite)
             yeartemp = meteorite["year"][:4]
             if (yeartemp == year):
                 print(yeartemp)
