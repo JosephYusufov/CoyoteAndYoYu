@@ -32,6 +32,9 @@ def findCoordinates(lat, long):
                 print(meteorite["reclat"] + ", " + meteorite["long"])
 
 
+findName("Aachen")
+findMass(21)
+findYear(1957)
 #findByZip(11234)
 #findByBorough("Bronx")
 #findByZipWithScoreCap(10280, 8)
