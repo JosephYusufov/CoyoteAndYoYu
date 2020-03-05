@@ -39,6 +39,8 @@ with open("prize.json", "r") as file:
 # for document in collection.find({"category": "chemistry"}):
 #     print(document)
 #     print("\n\n")
+def printHi():
+    print("Hello, nobel")
 
 def findTopic(topic):
     topic = topic.lower()
