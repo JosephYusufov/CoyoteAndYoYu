@@ -3,9 +3,9 @@ prize.json contains all nobel prize winners, as well as the year in which they w
 http://api.nobelprize.org/v1/prize.json
 To import the data, we first opened the json and read in the lines to a list. Then we used the json library to convert the json strings to dictionaries and inserted them one by one into the database.
 """
-
 import json
 from pymongo import MongoClient
+
 
 client = MongoClient()
 db = client.teamName
@@ -15,11 +15,12 @@ collection.remove()
 client = MongoClient()
 db = client.teamName
 collection = db.events
+collection.delete_many({})
 
-with open("prize.json", "r") as file:
+
+with open("./nobel/prize.json", "r") as file:
     content = json.load(file)
     for line in content['prizes']:
-
         # print('\n')
         # print(line["category"])
         newline = {"year": line["year"], "category": line["category"]}
@@ -34,14 +35,13 @@ with open("prize.json", "r") as file:
         #print(newline)
         # print('\n')
         collection.insert_one(newline)
-
-
 # for document in collection.find({"category": "chemistry"}):
 #     print(document)
 #     print("\n\n")
 def printHi():
     print("Hello, nobel")
 
+    
 def findTopic(topic):
     topic = topic.lower()
     data = collection.find({"category": topic})
@@ -58,6 +58,7 @@ def findTopic(topic):
                     print("reason: " + infoDict[u'motivation'])
         print("\n")
 
+        
 def findYear(year):
     data = collection.find({"year": year})
     # print(data[0])
@@ -73,5 +74,6 @@ def findYear(year):
                     print("reason: " + infoDict[u'motivation'])
         print("\n")
 
-findTopic("chemistry")
-#findYear("1945")
+        
+# findTopic("chemistry")
+# findYear("1945")

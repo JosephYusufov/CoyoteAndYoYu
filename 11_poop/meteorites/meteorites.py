@@ -22,6 +22,12 @@ import datetime
 client = MongoClient()
 db = client.WhoLetTheDogsOut
 meteorites = db.meteorites
+meteorites.delete_many({})
+
+with open("./meteorites/meteorites.json", 'r') as file:
+    data = json.load(file)
+    for member in data:
+        id = meteorites.insert_one(loads(json.dumps(member)))
 
 
 def findName(name):
@@ -54,11 +60,11 @@ def findCoordinates(lat, long):
 def printHi():
     print("Hello, meteorites")
 
-print("=== FINDING NAME ===")
-findName("Aachen")
-print("=== FINDING MASS ===")
-findMass(21)
-print("=== FINDING YEAR ===")
-findYear(1952)
-print("=== FINDING COORDS (25, 105) ===")
-findCoordinates(25, 105)
+# print("=== FINDING NAME ===")
+# findName("Aachen")
+# print("=== FINDING MASS ===")
+# findMass(21)
+# print("=== FINDING YEAR ===")
+# findYear(1952)
+# print("=== FINDING COORDS (25, 105) ===")
+# findCoordinates(25, 105)
