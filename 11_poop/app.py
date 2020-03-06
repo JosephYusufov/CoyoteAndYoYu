@@ -13,6 +13,14 @@ meteorites.printHi()
 def welcome():
     return render_template("index.html")
 
+@app.route("/meteorites")
+def meteorites():
+    return render_template("meteorites.html")
+
+@app.route("/nobel")
+def nobel():
+    return render_template("nobel.html")
+
 if __name__ == "__main__":
     app.debug = True
     app.run(host='0.0.0.0')
