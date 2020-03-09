@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from meteorites import meteorites
 from nobel import prize
 import os
@@ -13,8 +13,10 @@ meteorites.printHi()
 def welcome():
     return render_template("index.html")
 
-@app.route("/meteorites")
+@app.route("/meteorites", methods=['GET', 'POST'])
 def meteorites():
+    select = request.form.get("meteorites")
+    print(select)
     return render_template("meteorites.html")
 
 @app.route("/nobel")
