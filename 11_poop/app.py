@@ -15,12 +15,20 @@ def welcome():
 
 @app.route("/meteorites", methods=['GET', 'POST'])
 def meteorites():
-    select = request.form.get("meteorites")
-    print(select)
+    if request.args:
+        print(request.args["query"])
+        print(request.args["field"])        
+        return render_template("meteorites.html")
     return render_template("meteorites.html")
+
 
 @app.route("/nobel")
 def nobel():
+    if request.args:
+        print(request.args["query"])
+        print(request.args["field"])        
+        return render_template("nobel.html")
+    
     return render_template("nobel.html")
 
 if __name__ == "__main__":

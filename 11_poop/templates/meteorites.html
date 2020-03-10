@@ -7,16 +7,17 @@
   <body>
     <h3>Joseph and Derek</h3>
     <p>Thomas Ghita</p>
-    <select id="meteorites" name="meteorites">
+    <br>
+    <form target="/meteorites" name="meteorites" method="GET">
+      <select id="field" name="field">
         <option value="name">Name</option>
         <option value="mass">Mass</option>
         <option value="year">Year</option>
         <option value="coordinates">Coordinates</option>
-    </select>
-    <br>
-    <form target="/meteorites" name="meteorites" method="GET">
-        <input type="text" id="query" name="query"><br><br>
-        <input type="submit" value="Submit">
+      </select>
+      
+      <input type="text" id="query" name="query"><br><br>
+      <input type="submit" value="Submit">
     </form>
   </body>
   <footer>NOTE: for coordinates, please input in the form &lt;latitude,longitude&gt;</footer>
