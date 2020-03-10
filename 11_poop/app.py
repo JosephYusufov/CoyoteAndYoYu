@@ -14,16 +14,24 @@ def welcome():
     return render_template("index.html")
 
 @app.route("/meteorites", methods=['GET', 'POST'])
-def meteorites():
-    if request.args:
+def meteoritesRoute():
+    if request.args:        
         print(request.args["query"])
-        print(request.args["field"])        
-        return render_template("meteorites.html")
+        print(request.args["field"])
+        if request.args["field"] == "name":
+            toDisplay = meteorites.findName(request.args["query"])
+        elif request.args["field"] == "mass":
+            tpDisplay = meteorites.findMass(request.args["query"])
+        elif request.args["field"] == "year":
+            toDisplay = meteorites.findYear(request.args["query"])
+        elif request.args["field"] == "coordinates":
+            toDisplay = meteorites.findCoordinates(request.args["query"])        
+        return render_template("meteorites.html", data=toDisplay)
     return render_template("meteorites.html")
 
 
 @app.route("/nobel")
-def nobel():
+def nobelRoute():
     if request.args:
         print(request.args["query"])
         print(request.args["field"])        

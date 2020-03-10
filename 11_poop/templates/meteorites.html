@@ -19,6 +19,19 @@
       <input type="text" id="query" name="query"><br><br>
       <input type="submit" value="Submit">
     </form>
+
+    {% if data %}
+    {% for member in data %}
+    <div>
+      <h3>{{member['name']}}</h3>
+      <h5>Mass: {{member['mass']}} tonnes</h5>
+      <h5>Year: {{member['year']}}</h5>
+      <h5>Lattitude: {{member['reclat']}}</h5>
+      <h5>Longitude: {{member['reclong']}}</h5>      
+      <hr/>
+    </div>
+    {% endfor %}
+    {% endif %}
   </body>
   <footer>NOTE: for coordinates, please input in the form &lt;latitude,longitude&gt;</footer>
 </html>

@@ -31,32 +31,34 @@ with open("./meteorites/meteorites.json", 'r') as file:
 
 
 def findName(name):
-        for meteorite in meteorites.find({"name" : str(name)}):
-                pprint(meteorite)
+        return meteorites.find({"name" : str(name)})
+
 
 
 def findMass(mass):
-        for meteorite in meteorites.find({"mass": str(mass)}):
-                pprint(meteorite)
+        return meteorites.find({"mass": str(mass)})
+
 
 
 def findYear(year):
-        i = 0
-        for meteorite in meteorites.find():
-                try:
-                        yeartemp = meteorite["year"][:4]
-                        if (yeartemp == str(year)):
-                                pprint(meteorite)
-                except: pass
-
+    i = 0
+    toReturn = []
+    for meteorite in meteorites.find():
+        try:
+            yeartemp = meteorite["year"][:4]
+            if (yeartemp == str(year)):
+                toReturn.append(meteorite)
+        except: pass
+        
+    return toReturn
+    
 
 def findCoordinates(lat, long):
-        for meteorite in meteorites.find({"$and":[
+        return meteorite in meteorites.find({"$and":[
                         {"reclat" : { "$gt": str(lat-2), "$lt": str(lat+2)}},
                         {"reclong" : { "$gt": str(long-2), "$lt": str(long+2)}}
-                        ]}):
-                pprint(meteorite)
-
+                        ]})
+    
 def printHi():
     print("Hello, meteorites")
 
