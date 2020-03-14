@@ -18,7 +18,8 @@ collection = db.events
 collection.delete_many({})
 
 
-with open("./nobel/prize.json", "r") as file:
+with open("
+prize.json", "r") as file:
     content = json.load(file)
     for line in content['prizes']:
         # print('\n')
@@ -45,7 +46,7 @@ def printHi():
 def findTopic(topic):
     topic = topic.lower()
     data = collection.find({"category": topic})
-    #print(data)
+    print(data)
     for thing in data:
         for item in thing:
             if (item != "laureates" and item!="_id"):
@@ -75,5 +76,5 @@ def findYear(year):
         print("\n")
 
         
-#findTopic("chemistry")
+findTopic("chemistry")
 # findYear("1945")

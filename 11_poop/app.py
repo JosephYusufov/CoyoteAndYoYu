@@ -34,9 +34,12 @@ def meteoritesRoute():
 def nobelRoute():
     if request.args:
         print(request.args["query"])
-        print(request.args["field"])        
-        return render_template("nobel.html")
-    
+        print(request.args["field"])
+        if request.args["field"] == "Topic":
+            toDisplay = prize.findTopic(request.args["query"])
+        if request.args["field"] == "Year": 
+            toDisplay = prize.findTopic(request.args["query"])
+        return render_template("nobel.html",data = toDisplay)
     return render_template("nobel.html")
 
 if __name__ == "__main__":
