@@ -41,39 +41,41 @@ with open("./nobel/prize.json", "r") as file:
 def printHi():
     print("Hello, nobel")
 
-    
+
 def findTopic(topic):
     topic = topic.lower()
     data = collection.find({"category": topic})
     #print(data)
+    hello = []
     for thing in data:
         for item in thing:
             if (item != "laureates" and item!="_id"):
-                print("{} : {}".format(item, thing[item]))
+                hello.append("{} : {}".format(item, thing[item]))
             elif(item!="_id"):
                 for piece in thing[item]:
                    # print(thing[item][piece])
                     infoDict = thing[item][piece]
-                    print("name: " + infoDict['firstname'])
-                    print("reason: " + infoDict[u'motivation'])
-        print("\n")
+                    hello[-1]+=("name: " + infoDict['firstname'])
+                    hello[-1]+=("reason: " + infoDict[u'motivation'])
+        hello[-1]+=("\n")
 
-        
+
 def findYear(year):
     data = collection.find({"year": year})
     # print(data[0])
+    hello = []
     for thing in data:
         for item in thing:
             if (item != "laureates" and item!="_id"):
-                print("{} : {}".format(item, thing[item]))
+                hello.append("{} : {}".format(item, thing[item]))
             elif(item!="_id"):
                 for piece in thing[item]:
                    # print(thing[item][piece])
                     infoDict = thing[item][piece]
-                    print("name: " + infoDict['firstname'])
-                    print("reason: " + infoDict[u'motivation'])
-        print("\n")
+                    hello[-1]+=("name: " + infoDict['firstname'])
+                    hello[-1]+=("reason: " + infoDict[u'motivation'])
+        hello[-1]+=("\n")
 
-        
+
 #findTopic("chemistry")
 # findYear("1945")
