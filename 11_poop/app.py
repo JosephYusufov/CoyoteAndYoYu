@@ -39,7 +39,7 @@ def nobelRoute():
         if request.args["field"] == "topic":
             toDisplay = prize.findTopic(request.args["query"])
         if request.args["field"] == "year":
-            toDisplay = prize.findTopic(str(request.args["query"]))
+            toDisplay = prize.findYear(str(request.args["query"]))
         #print(toDisplay)
         return render_template("nobel.html",data = toDisplay)
     return render_template("nobel.html")
