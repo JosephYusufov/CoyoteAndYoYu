@@ -32,13 +32,15 @@ def meteoritesRoute():
 
 @app.route("/nobel")
 def nobelRoute():
+    toDisplay = None
     if request.args:
         print(request.args["query"])
         print(request.args["field"])
-        if request.args["field"] == "Topic":
+        if request.args["field"] == "topic":
             toDisplay = prize.findTopic(request.args["query"])
-        if request.args["field"] == "Year": 
-            toDisplay = prize.findTopic(request.args["query"])
+        if request.args["field"] == "year":
+            toDisplay = prize.findTopic(str(request.args["query"]))
+        #print(toDisplay)
         return render_template("nobel.html",data = toDisplay)
     return render_template("nobel.html")
 

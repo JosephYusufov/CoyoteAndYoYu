@@ -52,13 +52,17 @@ def findTopic(topic):
             if (item != "laureates" and item!="_id"):
                 hello.append("{} : {}".format(item, thing[item]))
             elif(item!="_id"):
+                count = 0
                 for piece in thing[item]:
-                   # print(thing[item][piece])
+                    #print(piece)
+                    #print(thing[item][piece])
                     infoDict = thing[item][piece]
-                    hello[-1]+=("name: " + infoDict['firstname'])
-                    hello[-1]+=("reason: " + infoDict[u'motivation'])
-        hello[-1]+=("\n")
-
+                    if(count == 0):
+                        hello.append("reason: " + infoDict[u'motivation'])
+                    hello.append("name: " + infoDict['firstname'])
+                    count+=1
+        hello.append("\n")
+    return hello
 
 def findYear(year):
     data = collection.find({"year": year})
@@ -75,7 +79,7 @@ def findYear(year):
                     hello[-1]+=("name: " + infoDict['firstname'])
                     hello[-1]+=("reason: " + infoDict[u'motivation'])
         hello[-1]+=("\n")
-
+    return hello
 
 #findTopic("chemistry")
 # findYear("1945")

@@ -16,5 +16,10 @@
       <input type="text" id="query" name="query"><br><br>
       <input type="submit" value="Submit">
     </form>
+  {% if data %}
+  {% for member in data%}
+  {{member}}<br>
+  {% endfor %}
+  {% endif %}
   </body>
 </html>
