@@ -25,7 +25,8 @@ def meteoritesRoute():
         elif request.args["field"] == "year":
             toDisplay = meteorites.findYear(request.args["query"])
         elif request.args["field"] == "coordinates":
-            toDisplay = meteorites.findCoordinates(request.args["query"])        
+            coords = request.args["query"].split(',')
+            toDisplay = meteorites.findCoordinates(coords[0], coords[1]) 
         return render_template("meteorites.html", data=toDisplay)
     return render_template("meteorites.html")
 
